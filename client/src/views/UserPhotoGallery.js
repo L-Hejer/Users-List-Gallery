@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { addPhoto, deletePhoto } from "../js/actions/galleryActions";
-// import PhotoAddModal from "../components/Modals/PhotoAddModal";
+import PhotoAddModal from "../Components/Modals/PhotoAddModal";
 import PhotoCard from "../Components/PhotoCard";
 import search from "../assets/icons/search.svg";
 import {
@@ -63,7 +63,7 @@ class UserPhotoGallery extends Component {
             </InputGroup>
           </Col>
           <Col className="col-1 d-flex  align-self-center">
-            {/* <PhotoAddModal user={user} addPhoto={this.props.addPhoto} /> */}
+            <PhotoAddModal user={user} addPhoto={this.props.addPhoto} />
           </Col>
         </Row>
         {this.comoponentIsLoading(

@@ -8,7 +8,7 @@ class PhotoCard extends Component {
     show: false
   };
 
-  handleShow = () => this.setState({ show: true });
+  handleShow = () => this.setState({ show: !this.state.show});
   render() {
       const { link, title} = this.props.photo
     return (
@@ -39,7 +39,7 @@ class PhotoCard extends Component {
               src={remove}
               as="input"
               type="submit"
-            //   onClick={() => deletePhoto(photo._id)}
+              onClick={() => this.props.deletePhoto(this.props.photo._id)}
             />
           </Card.Body>
         </Card>

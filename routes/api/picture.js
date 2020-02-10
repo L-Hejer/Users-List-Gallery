@@ -30,13 +30,10 @@ Router.post('/:id', validatePictureAdd(), validate, async (req, res) => {
 //@Route    GET api/picture/:id
 //@desc     Get Picture by user id
 //@access   Public
-Router.get('/:id', async (req, res) => {
+Router.get('/', async (req, res) => {
   try {
-    const gallery = await Picture.find({ user: req.params.id }).populate(
-        'gallery',
-        ['title', 'link']
-      );
-    res.json(gallery);
+    const photos = await Picture.find();
+    res.json(photos);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
@@ -47,13 +44,13 @@ Router.get('/:id', async (req, res) => {
 //@desc     remove Picture by picture id
 //@access   Public
 Router.delete('/:id', async (req, res) => {
-    try {
-        await Picture.findOneAndRemove({ _id: req.params.id});
-        res.json({msg: 'Picture Removed'});
-    } catch (error) {
-        console.error(err.message);
-        res.status(500).send('Server Error'); 
-    }
-})
+  try {
+    await Picture.findOneAndRemove({ _id: req.params.id });
+    res.json({ msg: 'Picture Removed' });
+  } catch (error) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 
 module.exports = Router;

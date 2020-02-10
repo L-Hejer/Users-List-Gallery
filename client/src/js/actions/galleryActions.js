@@ -3,8 +3,6 @@ import axios from 'axios';
 import {
     GALLERY_LOADING,
     GET_PHOTOS,
-    ADD_PICTURE,
-    DELETE_PICTURE,
   } from '../const/actionTypes';
 
 // LOADING GALLERY
@@ -21,7 +19,7 @@ axios
     type: GET_PHOTOS,
     payload: res.data
 }))
-.catch(err => console.error(err))
+.catch(err => console.log(('error get photos')))
   };
 
   //ADD PHOTO
