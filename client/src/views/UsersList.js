@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {Container ,Row ,Col, FormControl, InputGroup, Image, Spinner} from "react-bootstrap";
+import {Container ,Row ,Col, FormControl, InputGroup, Image } from "react-bootstrap";
 
 import {loadUser, addUser, editUser, deleteUser} from '../js/actions/usersActions'
 
-import search from "../assets/icons/search.svg";
 import UsersTable from "../Components/UsersTable";
 import UserAddModal from '../Components/Modals/UserAddModal';
-// import UserEditModal from '../Modals/UserEditModal'
+
+import search from "../assets/icons/search.svg";
+
 
 
 
@@ -18,6 +19,7 @@ class UsersList extends Component {
 
     //Add a User
     handleAdd = newUser => this.props.addUser(newUser);
+
     // Edit user
     handleEdit = (id, newUser) => this.props.editUser(id, newUser);
   
@@ -35,16 +37,6 @@ class UsersList extends Component {
           .toLowerCase()
           .includes(this.state.searchFilter.toLowerCase().trim());
       });
-  
-    //handleLoading
-    comoponentIsLoading = component =>
-      this.props.users.isLoading ? (
-        <Row className="d-flex justify-content-center mt-5">
-          <Spinner animation="grow" />
-        </Row>
-      ) : (
-        component
-      );
   
     render() {
       return (
@@ -69,14 +61,11 @@ class UsersList extends Component {
               <UserAddModal handleAdd={this.handleAdd} />
             </Col>
           </Row>
-          {/* {this.comoponentIsLoading( */}
             <UsersTable
               users={this.filterUser(this.props.users.users)}
               handleEdit={this.handleEdit}
               handleUserDelete ={this.handleUserDelete }
-              // comoponentIsLoading={this.comoponentIsLoading}
             />
-          {/* )} */}
         </Container>
       );
     }
