@@ -15,7 +15,7 @@ class PhotoCard extends Component {
       <>
         <Card
           border="dark"
-          style={{ width: "18rem", height: "18rem", margin: "1%" }}
+          style={{ width: "18rem", height: "18rem", margin: "1%", overflow:'hidden' }}
         >
           <Card.Img
             variant="top"
